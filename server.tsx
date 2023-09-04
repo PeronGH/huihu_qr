@@ -15,7 +15,7 @@ app.get("/", (ctx) => {
 
   return ctx.html(
     <Page title="Huihu QR Code">
-      <div class="container mx-auto flex flex-col items-center space-y-4 my-4">
+      <div class="w-full flex flex-col items-center space-y-4">
         <div id="qrcode" />
         <form
           hx-get="/qrcode"
