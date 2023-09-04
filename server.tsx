@@ -25,7 +25,13 @@ app.get("/", (ctx) => {
         >
           <div class="space-x-2">
             <label for="openId">openId:</label>
-            <input type="text" name="openId" id="openId" value={openId} />
+            <input
+              type="text"
+              name="openId"
+              id="openId"
+              value={openId}
+              required
+            />
           </div>
         </form>
       </div>
@@ -68,6 +74,7 @@ app.get("/qrcode", async (ctx) => {
       class="w-full max-h-screen p-8"
       content={qrCodeContent}
     />,
+    { headers: { "HX-Push": `?openId=${openId}` } },
   );
 });
 
