@@ -11,7 +11,7 @@ const app = new Hono();
 app.route("/assets", assets);
 
 app.get("/", (ctx) => {
-  const openId = getCookie(ctx, "openId");
+  const openId = ctx.req.query("openId") ?? getCookie(ctx, "openId");
 
   return ctx.html(
     <Page title="Huihu QR Code">
