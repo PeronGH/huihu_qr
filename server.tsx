@@ -3,7 +3,6 @@ import { Hono } from "hono/mod.ts";
 import { Page } from "$/htmx/page.tsx";
 import { assets } from "$/routes/assets.ts";
 import { QrCode } from "$/htmx/qrcode.tsx";
-import { getCookie, setCookie } from "hono/middleware.ts";
 import { getQrCodeContent, getToken } from "$/utils/huihu.ts";
 
 const app = new Hono();
@@ -11,7 +10,7 @@ const app = new Hono();
 app.route("/assets", assets);
 
 app.get("/", (ctx) => {
-  const openId = ctx.req.query("openId") ?? getCookie(ctx, "openId");
+  const openId = ctx.req.query("openId");
 
   return ctx.html(
     <Page title="Huihu QR Code">
@@ -47,16 +46,12 @@ app.get("/qrcode", async (ctx) => {
 
   const token = await getToken(openId);
   if (!token) {
-    // expire `openId` cookie
-    setCookie(ctx, "openId", "", { maxAge: 0 });
     return ctx.html(
       <p id="qrcode" class="font-semibold text-red-500">
         incorrect openId
       </p>,
     );
   }
-  // set `openId` cookie
-  setCookie(ctx, "openId", openId, { maxAge: 60 * 60 * 24 * 365 });
 
   const qrCodeContent = await getQrCodeContent(token);
   if (!qrCodeContent) {
