@@ -68,7 +68,7 @@ app.get("/qrcode", async (ctx) => {
   }
 
   return ctx.html(
-    <QrCode id="qrcode" class="w-64" content={qrCodeContent} />,
+    <QrCode id="qrcode" class="w-full max-h-screen" content={qrCodeContent} />,
   );
 });
 
