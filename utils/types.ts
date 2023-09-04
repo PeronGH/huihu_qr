@@ -1,4 +1,4 @@
-import type { HtmlEscapedString } from "hono/utils/html.ts";
+import type { HtmlEscaped, HtmlEscapedString } from "hono/utils/html.ts";
 
 export type Children =
   | string
@@ -10,4 +10,4 @@ export interface PropsWithChildren {
 }
 
 // deno-lint-ignore ban-types
-export type FC<P = {}> = (props: P & PropsWithChildren) => string;
+export type FC<P = {}> = (props: P & PropsWithChildren) => HtmlEscaped;

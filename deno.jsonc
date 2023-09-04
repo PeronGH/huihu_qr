@@ -8,7 +8,8 @@
     "std/": "https://deno.land/std@0.201.0/",
     "hono/": "https://deno.land/x/hono@v3.5.6/",
     "hono/jsx-runtime": "https://deno.land/x/hono@v3.5.6/jsx/jsx-runtime.ts",
-    "hono/jsx-dev-runtime": "https://deno.land/x/hono@v3.5.6/jsx/jsx-dev-runtime.ts"
+    "hono/jsx-dev-runtime": "https://deno.land/x/hono@v3.5.6/jsx/jsx-dev-runtime.ts",
+    "sexy-qr": "https://esm.sh/sexy-qr@0.3.2"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
